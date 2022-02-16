@@ -41,6 +41,8 @@ function draw()
     fill("red");
     stroke("red");
 
+
+
     if(scoreLeftWrist > 0.2)
     {
         circle(leftWristX, leftWristY, 20);
@@ -49,6 +51,16 @@ function draw()
         {
             song2.play();
             document.getElementById("songname").innerHTML = "Playing That's What I Want by Lil Nas X";
+        }
+    }
+    if(scoreRightWrist > 0.2)
+    {
+        circle(rightWristX, rightWristY, 20);
+        song2.stop();
+        if(song1_status == false)
+        {
+            song1.play();
+            document.getElementById("songname").innerHTML = "Playing Harry Potter Theme Song by John Williams";
         }
     }
 }
@@ -67,6 +79,7 @@ function gotPoses(results)
         console.log("righttWristX = " + rightWristX + " rightWristY = " + rightWristY);
 
         scoreLeftWrist = results[0].pose.keypoints[9].score;
+        scoreRightWrist = results[0].pose.keypoints[10].score;
     }
 }
 
